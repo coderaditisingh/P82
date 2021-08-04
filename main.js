@@ -1,9 +1,11 @@
-var color ="blue";
-var width_l = 5;
-var current_Y_axis="",last_P_Y="";
-var current_X_axis="",last_P_X="";
+var color ="black";
+var width = "5";
+ var current_Y_axis="";
+ var current_X_axis="",
+// MouseEvent="";
 
-mouseEvent="empty";
+mouseEvent = "empty";
+var last_P_Y="" , last_P_X="";
 
 var canvas=document.getElementById("myCanvas");
 ctx= canvas.getContext("2d");
@@ -11,31 +13,37 @@ ctx= canvas.getContext("2d");
 canvas.addEventListener("mousedown",mouse_down_now);
 function mouse_down_now(e){
 color=document.getElementById("color").value;
+
+// please write width_l instead of width in below
 width_l=document.getElementById("width_l").value;
-mouseEvent="mouseDown";
+
+// please write mouseDown use capital D
+MouseEvent="mouseDown";
 }
 canvas.addEventListener("mouseleave",my_mouse_leave);
 function my_mouse_leave(e){
-    mouseEvent="mouse leave";
+    MouseEvent="mouseleave";
     }
 
     canvas.addEventListener("mouseup",my_mouse_up);
 function my_mouse_up(e){
-    mouseEvent="mouse up ";
+    // please write UP in capital
+    MouseEvent="mouse UP ";
     }
 
     canvas.addEventListener("mousemove",my_mouse_move);
 function my_mouse_move(e){
     current_X_axis=e.clientX-canvas.offsetLeft;
     current_Y_axis=e.clientY-canvas.offsetTop;
-        mouseEvent="mouse move";
+        // MouseEvent="mouse move";
     
-        if (mouseEvent=="mouseDown"){
+        if (MouseEvent=="mouseDown"){
             ctx.beginPath();
             ctx.strokeStyle= color;
+            // please write width_l instead of width in below
             ctx.lineWidth = width_l;
-            console.log("last Pos Y="+ last_P_Y+ "last Pos X="+last_P_X);
-            ctx.arc(current_X_axis,current_Y_axis, radius,0);
+            ctx.arc(current_X_axis,current_Y_axis,radius,0);
+            ctx.stroke();
         }
         last_P_Y=current_Y_axis;
         last_P_X=current_X_axis;
@@ -46,5 +54,3 @@ function my_mouse_move(e){
 {
 ctx.clearRect(0,0,canvas.width,canvas.height);
 }
-
-
